@@ -1,0 +1,70 @@
+.product--outer {
+	display: flex;
+}
+.product--primary {
+	display: flex;
+	flex-direction: column;
+	width: 74%;
+
+	.product-gallery {
+		width: 50%;
+	}
+	.product-main {
+		width: 47.5%;
+	}
+}
+.product--primary-container {
+	display: flex;
+}
+.product--secondary {
+	display: flex;
+	flex-direction: column;
+	margin-left: 4%;
+	width: 22%;
+
+	.product-form--alt {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+.product---helplinks {
+	font-size: 18px;
+	margin-top: 30px;
+}
+.product---helplink {
+	background-color: #f7f7f7;
+	color: #0a0a0a;
+	display: block;
+	margin-bottom: 5px;
+	padding: 20px;
+	text-decoration: none;
+
+	.title {
+		display: block;
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.subtext {
+		display: block;
+		font-size: 14px;
+	}
+}
+
+.product-pricing {
+	flex-direction: column-reverse;
+}
+.product--price {
+	flex-direction: column;
+
+	.price--compare-at {
+		font-size: 16px;
+
+		:before {
+			content: "RRP: "
+		}
+	}
+}
+.badge--sale {
+	display: none;
+}

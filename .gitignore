@@ -1,0 +1,6 @@
+/.idea
+/config.yml
+/theme.lock
+/node_modules/
+/assets/app.js
+/assets/theme.scss.liquid

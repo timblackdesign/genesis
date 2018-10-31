@@ -1,0 +1,55 @@
+{%- capture tabs -%}
+  
+{%- endcapture -%}
+
+{%- assign tabs_array = tabs | strip | split: '~~' -%}
+{%- assign p_id_str = product.id | downcase -%}
+
+{%- for item in tabs_array -%}
+  {%- assign tab = item | split: '^^' -%}
+  {%- assign asn = tab[3] | split: '|' -%}
+  {%- assign h_t = false -%}
+
+  {%- assign p_ids = asn[0] | split: ',' -%}
+
+  {%- if asn[0] == '0' or p_ids contains p_id_str -%}
+    {%- assign h_t = true -%}
+  {%- endif -%}
+
+  {%- unless h_t -%}
+    {%- if asn[1] == '0' and product.collections.size > 0 -%}
+      {%- assign h_t = true -%}
+    {%- endif -%}
+  {%- endunless -%}
+
+  {%- unless h_t -%}
+    {%- assign col_ids = asn[1] | split: ',' -%}
+
+    {%- for c in product.collections -%}
+      {% assign c_id = c.id | downcase %}
+      {%- if col_ids contains c_id %}
+        {%- assign h_t = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endunless -%}
+
+  {%- unless h_t -%}
+    {%- assign tags = asn[2] | split: ',' -%}
+    {%- for t in tags -%}
+      {%- if product.tags contains t -%}
+        {%- assign h_t = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endunless -%}
+
+  {% if h_t %}
+  <div id="station-tabs-data-{{ tab[0] }}" class="station-tabs-data-item" style="display:none;">
+    <a id="st-link-{{ tab[1] | handleize }}" class="station-tabs-link" href="#{{ tab[1] | handleize }}"><span>{{ tab[1] }}</span></a>
+    <div id="st-{{ tab[1] | handleize }}" class="station-tabs-content">
+      <div class="station-tabs-content-inner">{{ tab[2] }}</div>
+    </div>
+  </div>
+  {% endif %}
+{%- endfor -%}

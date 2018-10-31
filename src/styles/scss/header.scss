@@ -1,0 +1,42 @@
+.site-header-container {
+    display: flex;
+    max-width: 1400px;
+    padding: 0 25px;
+    position: relative;
+    width: 100%;
+}
+.site-header {
+	@media screen and (min-width: 1024px) {
+		justify-content: center;
+		max-width: none;
+	    padding-top: 40px;
+	    padding-bottom: 40px;
+	}
+}
+.site-navigation-wrapper {
+	background-color: $red;
+}
+
+.site-navigation {
+	background-color: transparent;
+
+	.navmenu-depth-1 > li > a {
+		color: #fff;
+		font-weight: 500;
+	}
+}
+
+.site-header-actions {
+	a {
+		color: #fff;
+		font-size: 16px;
+		font-weight: 500;
+	}
+}
+
+.site-header-search-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+	
+

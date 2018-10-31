@@ -1,0 +1,128 @@
+.site-footer-wrapper {
+	padding-top: 0;
+
+	.site-logo-image {
+		max-width: 350px;
+	}
+}
+
+.site-footer__newsletter {
+	background-color: $red;
+	font-size: 16px;
+	padding: 45px 30px 60px;
+
+
+}
+.site-footer__newsletter-container {
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+
+	h2 {
+		font-size: 30px;
+		font-weight: 700;
+		margin-top: 0;
+	}
+
+	.button-primary {
+		background-color: #000;
+		border: 0 solid;
+		opacity: 1;
+		transition: background-color .3s;
+
+		&:hover {
+			background-color: #000;
+			border: 0 solid;
+			opacity: .8;
+		}
+	}
+
+	.newsletter-input {
+		max-width: none;
+
+		input {
+			border: 0 solid;
+		}
+	}
+	.newsletter-submit {
+		width: auto;
+	}
+}
+
+.site-footer-logo {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+}
+
+.site-footer-information {
+	background-color: #232323;
+	display: flex;
+	padding: 15px;
+	justify-content: center;
+
+	.container {
+		// max-width: 1400px;
+		width: 100%;
+	}
+	.column-container {
+		display: flex;
+		justify-content: space-between;
+
+		@media screen and ( max-width: 1020px ) {
+			flex-direction: column;
+		}
+	}
+	.site-footer-column  {
+		display: flex;
+		align-items: center;
+		width: 33%;
+
+		&.column2 {
+			display: flex;
+			justify-content: center;
+
+			.payment-icons {
+				display: flex;
+				justify-content: center;
+			}
+		}
+		&.column3 {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+	.site-footer-credits {
+		color: #aaa;
+		font-size: 12px;
+		margin: 0;
+
+		strong {
+			color: #fff;
+			font-weight: 300;
+		}
+	}
+	.payment-icons-item {
+		svg {
+			border-radius: 5px;
+		}
+	}
+}
+
+.site-footer-helplinks {
+	font-size: 18px;
+	font-weight: 700;
+
+	.column-container {
+		display: flex;
+		justify-content: space-between;
+
+		@media screen and ( max-width: 1020px ) {
+			flex-direction: column;
+		}
+	}
+	hr {
+		margin: 45px 0;
+		opacity: .3;
+	}
+}
