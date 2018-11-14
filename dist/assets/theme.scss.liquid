@@ -16315,4 +16315,43 @@ $black: #0a0a0a;
             display: none;
         }
     }
+
+    .article--excerpt-content {
+        padding: 1.5rem;
+    }
+}
+
+.announcement-section {
+    color: #0a0a0a;
+    font-size: 25px;
+    font-weight: 600;
+    
+    .wrapper {
+
+        .content {
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            padding: 45px 0;
+            width: 100%;
+
+            @media screen and ( max-width: 1023px  ) {
+                text-align: left;
+                // justify-content: flex-start;
+                // padding: 0;
+            }
+
+            svg {
+                margin-right: 30px;
+                width: 37px;
+
+                @media screen and ( max-width: 767px ) {
+                    width: 100px;
+                }
+            }
+        }
+        
+    }
 }

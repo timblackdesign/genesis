@@ -1,0 +1,30 @@
+<section class="announcement-section home-section--content" >
+  <div class="pxs-image-with-text-content-wrapper wrapper">
+    <div class="content">
+      {% include 'icon-delivery' %} {{ section.settings.title }}
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Announcement",
+  "class": "announcement--section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline",
+      "default": "Fast & Free Shipping on Orders Over $150*"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Announcement"
+    }
+  ]
+}
+
+{% endschema %}
