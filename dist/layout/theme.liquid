@@ -79,8 +79,8 @@
 
     <main class="site-main">
       {% if template == 'index' %}
-        {% section 'static-slideshow' %}
         {% section 'static-highlights-banners' %}
+        {% section 'static-slideshow' %}     
       {% endif %}
 
       {{ content_for_layout }}

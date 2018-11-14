@@ -66,6 +66,9 @@
           class="pxs-image-with-text-content"
           style="color: {{ section.settings.color }};"
         >
+          <span class="pxs-image-with-text-meta">
+            {{ section.settings.meta | escape }}
+          </span>
           <h2
             class="pxs-image-with-text-heading"
           >
@@ -188,6 +191,12 @@
       "id": "title",
       "label": "Heading",
       "default": "Image with text overlay"
+    },
+    {
+      "type": "text",
+      "id": "meta",
+      "label": "Meta Title ",
+      "default": "Workout Guides"
     },
     {
       "type": "richtext",

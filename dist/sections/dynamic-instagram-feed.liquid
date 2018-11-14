@@ -42,6 +42,7 @@
       </figure>
     {% endfor %}
   </div>
+  <span class="instagram--subtext" >{{ section.settings.subtext }}</span>
 </section>
 {% schema %}
 {
@@ -59,6 +60,12 @@
       "id": "access_token",
       "label": "Instagram access token",
       "info": "[Instagram access token generator](http://instagram.pixelunion.net/)"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Follow @genesiscomau"
     }
   ],
   "presets": [

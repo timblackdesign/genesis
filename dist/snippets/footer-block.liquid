@@ -39,6 +39,7 @@
   
     {% if block.type != 'newsletter' %}
       {% include 'social-list' %}
+      {{ 'faststarters_logo.png' | asset_url | img_tag: 'Faststarters', 'faststarters-logo' }}
     {% endif %}
 
     {% if block.type == 'newsletter' %}
@@ -51,7 +52,7 @@
   {% elsif block.type == 'rewards' %}
     {% if block.settings.title != blank %}
       <h2 class="site-footer-block-title">
-        {{ block.settings.title | escape }}
+        {% include 'icon-phone_2' %} {{ block.settings.title | escape }}
       </h2>
     {% endif %}
 

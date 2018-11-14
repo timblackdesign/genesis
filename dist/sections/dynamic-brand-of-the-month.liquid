@@ -6,6 +6,7 @@
 
 <section
   class="
+    brand-of-the-month
     pxs-image-with-text
     pxs-image-with-text-section-height-{{ section.settings.section_height }}
   "
@@ -66,33 +67,38 @@
           class="pxs-image-with-text-content"
           style="color: {{ section.settings.color }};"
         >
-          <span class="pxs-image-with-text-meta">
-            {{ section.settings.meta | escape }}
-          </span>
-          <h2
-            class="pxs-image-with-text-heading"
-          >
-            {{ section.settings.title | escape }}
-          </h2>
+          <div class="col1">
+            {{ section.settings.featured_image | img_tag: 'Genesis Brand of the Month', 'brand-of-the-month__featured-image', '800x' }}
+          </div>
 
-          {% if section.settings.text != blank %}
-            <div
-              class="pxs-image-with-text-subheading rte"
+          <div class="col2">
+            <h2
+              class="pxs-image-with-text-heading"
             >
-              {{ section.settings.text }}
-            </div>
-          {% endif %}
+              {{ section.settings.title | escape }}
+            </h2>
 
-          {% if section.settings.button_text != blank %}
-            <a
-              {% if section.settings.link != blank %}
-                href="{{ section.settings.link }}"
-              {% endif %}
-              class="pxs-image-with-text-button"
-            >
-              {{ section.settings.button_text | escape }}
-            </a>
-          {% endif %}
+            {{ section.settings.brand_logo | img_tag: 'Genesis Brand of the Month Logo', 'brand-of-the-month__logo', 'large' }}
+
+            {% if section.settings.text != blank %}
+              <div
+                class="pxs-image-with-text-subheading rte"
+              >
+                {{ section.settings.text }}
+              </div>
+            {% endif %}
+
+            {% if section.settings.button_text != blank %}
+              <a style="background-color: {{ section.settings.button_color }}" 
+                {% if section.settings.link != blank %}
+                  href="{{ section.settings.link }}"
+                {% endif %}
+                class="pxs-image-with-text-button"
+              >
+                {{ section.settings.button_text | escape }}
+              </a>
+            {% endif %}
+          </div>
         </div>
       {% endif %}
     </div>
@@ -101,8 +107,8 @@
 
 {% schema %}
 {
-  "name": "Image with text overlay",
-  "class": "pxs-image-with-text-section",
+  "name": "Brand of the Month",
+  "class": "brand-of-the-month",
   "settings": [
     {
       "type": "select",
@@ -130,12 +136,26 @@
     },
     {
       "type": "header",
-      "content": "Image"
+      "content": "Brand Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured image"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Brand Logo"
+    },
+    {
+      "type": "header",
+      "content": "Background Image"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "Background Image"
     },
     {
       "type": "select",
@@ -191,12 +211,6 @@
       "id": "title",
       "label": "Heading",
       "default": "Image with text overlay"
-    },
-    {
-      "type": "text",
-      "id": "meta",
-      "label": "Meta Title ",
-      "default": "Workout Guides"
     },
     {
       "type": "richtext",
@@ -280,12 +294,18 @@
       "id": "button_text",
       "label": "Button text",
       "default": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Text color",
+      "default": "#000"
     }
   ],
   "presets": [
     {
       "category": "Image",
-      "name": "Image with text overlay"
+      "name": "Brand of the Month"
     }
   ]
 }

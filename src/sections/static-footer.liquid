@@ -4,101 +4,103 @@
   data-section-type="static-footer">
 </script>
 
-<section class="site-footer-wrapper">
-  {% assign form_id = 'footer_newsletter_fullwidth' %}
-  {%
-    include 'newsletter_fullwidth',
-    form_id: form_id,
-  %}
-  <div class="site-footer-logo">
-    <a
-      class="site-logo"
-      href="/">
-      {% if settings.site_logo %}
-        {% assign logo_alt = settings.site_logo.alt %}
-        {% if logo_alt == '' %}
-          {% assign logo_alt = shop.name | strip %}
+<section class="site-footer-wrapper" style="background-image: url({{ section.settings.bg_image | img_url: '2400x' }})" >
+  <div class="site-footer-bg-container">
+    {% assign form_id = 'footer_newsletter_fullwidth' %}
+    {%
+      include 'newsletter_fullwidth',
+      form_id: form_id,
+    %}
+    <div class="site-footer-logo">
+      <a
+        class="site-logo"
+        href="/">
+        {% if settings.site_logo %}
+          {% assign logo_alt = settings.site_logo.alt %}
+          {% if logo_alt == '' %}
+            {% assign logo_alt = shop.name | strip %}
+          {% endif %}
+
+          {%
+            include 'rimg',
+            img: settings.site_logo,
+            class: 'site-logo-image',
+            alt: logo_alt
+          %}
+        {% else %}
+          <span class="site-logo-text">
+            {{ shop.name }}
+          </span>
         {% endif %}
-
-        {%
-          include 'rimg',
-          img: settings.site_logo,
-          class: 'site-logo-image',
-          alt: logo_alt
-        %}
-      {% else %}
-        <span class="site-logo-text">
-          {{ shop.name }}
-        </span>
-      {% endif %}
-    </a>
-  </div>
-  {% if section.blocks.size %}
-    <div class="site-footer-item">
-      <div class="site-footer-blocks column-count-{{ section.blocks.size }}">
-        {% for block in section.blocks %}
-          {% include 'footer-block' %}
-        {% endfor %}
-      </div>
+      </a>
     </div>
-  {% endif %}
-
-  
-
-    <div class="site-footer-item site-footer-helplinks">
-      <hr>
-      <div class="container column-container">
-        <div class="site-footer-helplinks__column col3">Find Your Genesis Store</div>
-        <div class="site-footer-helplinks__column col3">Talk to Us 1800 4 Genesis</div>
-        <div class="site-footer-helplinks__column col3">Genesis Support Portal</div>
-      </div>
-    </div>
-
-  <div class="site-footer-information">
-    <div class="container column-container">
-      <div class="site-footer-column col3 column1">
-
-        {% if linklists[section.settings.additional_menu].links != blank %}
-          <nav
-            class="site-footer-navigation"
-            aria-label="{{ 'general.accessibility.nav_footer' | t }}"
-          >
-            {%
-              include 'navmenu',
-              menu: section.settings.additional_menu,
-              depth: 1,
-              max_depth: 1
-            %}
-          </nav>
-        {% endif %}
-
-        <p class="site-footer-credits">
-          {% assign year = 'now' | date: '%Y' %}
-          {{ 'footer.general.copyright_html' | t: year: year, shop_name: shop.name }} 
-          <strong>{{ 'footer.general.copyright_credit_html' | t }} {{ powered_by_link }}</strong>
-        </p>
-      </div>
-
-      {% if section.settings.payment_icons and shop.enabled_payment_types.size > 0 %}
-        <div class="site-footer-column col3 column2">
-          {% comment %}
-            - Test shop payment options against Shopify's provided list of payment gateways
-              (https://help.shopify.com/themes/customization/store/add-credit-card-icons)
-          {% endcomment %}
-          {% assign payment_icons_available = 'amazon_payments|american_express|android_pay|apple_pay|bitcoin|cirrus|dankort|diners_club|discover|dogecoin|dwolla|forbrugsforeningen|interac|jcb|litecoin|maestro|master|paypal|visa|stripe|shopify_pay' | split: '|' %}
-          <ul class="payment-icons">
-            {%- for type in shop.enabled_payment_types -%}
-              {%- if payment_icons_available contains type -%}
-                <li class="payment-icons-item">
-                  {%- include 'icon-payment-icons', id: type -%}
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
+    {% if section.blocks.size %}
+      <div class="site-footer-item">
+        <div class="site-footer-blocks column-count-{{ section.blocks.size }}">
+          {% for block in section.blocks %}
+            {% include 'footer-block' %}
+          {% endfor %}
         </div>
-      {% endif %}
-      <div class="site-footer-column col3 column3">
-        <span class="google-certified-badge" >Google Certified Store</span>
+      </div>
+    {% endif %}
+
+    
+
+      <div class="site-footer-item site-footer-helplinks">
+        <hr>
+        <div class="container column-container">
+          <div class="site-footer-helplinks__column col3"><a href="" class="site-footer-helplink">{% include 'icon-phone_2' %} Find Your Genesis Store</a></div>
+          <div class="site-footer-helplinks__column col3"><a href="" class="site-footer-helplink">{% include 'icon-phone_2' %} Talk to Us 1800 4 Genesis</a></div>
+          <div class="site-footer-helplinks__column col3"><a href="" class="site-footer-helplink">{% include 'icon-portal' %} Genesis Support Portal</a></div>
+        </div>
+      </div>
+
+    <div class="site-footer-information">
+      <div class="container column-container">
+        <div class="site-footer-column col3 column1">
+
+          {% if linklists[section.settings.additional_menu].links != blank %}
+            <nav
+              class="site-footer-navigation"
+              aria-label="{{ 'general.accessibility.nav_footer' | t }}"
+            >
+              {%
+                include 'navmenu',
+                menu: section.settings.additional_menu,
+                depth: 1,
+                max_depth: 1
+              %}
+            </nav>
+          {% endif %}
+
+          <p class="site-footer-credits">
+            {% assign year = 'now' | date: '%Y' %}
+            {{ 'footer.general.copyright_html' | t: year: year, shop_name: shop.name }} 
+            <strong>{{ 'footer.general.copyright_credit_html' | t }} {{ powered_by_link }}</strong>
+          </p>
+        </div>
+
+        {% if section.settings.payment_icons and shop.enabled_payment_types.size > 0 %}
+          <div class="site-footer-column col3 column2">
+            {% comment %}
+              - Test shop payment options against Shopify's provided list of payment gateways
+                (https://help.shopify.com/themes/customization/store/add-credit-card-icons)
+            {% endcomment %}
+            {% assign payment_icons_available = 'amazon_payments|american_express|android_pay|apple_pay|bitcoin|cirrus|dankort|diners_club|discover|dogecoin|dwolla|forbrugsforeningen|interac|jcb|litecoin|maestro|master|paypal|visa|stripe|shopify_pay' | split: '|' %}
+            <ul class="payment-icons">
+              {%- for type in shop.enabled_payment_types -%}
+                {%- if payment_icons_available contains type -%}
+                  <li class="payment-icons-item">
+                    {%- include 'icon-payment-icons', id: type -%}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {% endif %}
+        <div class="site-footer-column col3 column3">
+          <span class="google-certified-badge" >Google Certified Store</span>
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +111,15 @@
   "name": "Footer",
   "max_blocks": 5,
   "settings": [
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Select background image"
+    },
     {
       "type": "header",
       "content": "Payment icons"

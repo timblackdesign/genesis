@@ -108,12 +108,29 @@
               </div>
 
 
-
               {% if settings.product_ratings_reviews %}
                 <div class="product-ratings">
                   <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                 </div>
               {% endif %}
+              
+              {% comment %}
+                Insert short description
+              {% endcomment %}
+              {% assign custom_meta = product.metafields.product %}
+              {% if custom_meta.short_description %}
+                <div class="product-short_description"><span>{{ custom_meta.short_description }}</span></div>
+              {% endif %}
+              
+              {% comment %}
+                Insert promocode banner if promocode_ tag is present and matches a banner
+              {% endcomment %}
+              {% for tag in product.tags %}
+                {% if tag contains 'promocode_' %}
+                  {% assign image_src = tag | append: '.jpg' | file_img_url: '485x' %}
+                  {{ image_src | img_tag }}
+                {% endif %}
+              {% endfor %}
 
             </div>
 
@@ -167,9 +184,11 @@
 
     {% comment %}
       Product description field, never moves
+      TODO: filter tags down to those that contain "suitable_for"
     {% endcomment %}
+  
     {% if product.description != blank or hide_details %}
-      <div class="product-description rte" data-product-description>
+      <div class="product-description rte" data-product-description data-tags="{{ product.tags | join: ', ' }}">
         <div data-station-tabs-app>{{ product.description }}</div>
       </div>
     {% endif %}
@@ -191,7 +210,19 @@
         <a class="product---helplink" href="" ><span class="title">Fast and Free Shipping</span><span class="subtext">When you spend $150+</span></a>
         <a class="product---helplink" href="" ><span class="title">Spend. Earn. Save</span><span class="subtext">Genesis rewards program</span></a>
         <a class="product---helplink" href="" ><span class="title">Have a Question?</span><span class="subtext">Browse support portal</span></a>
-    </div>    
+    </div>   
+
+    <div class="product--sidebarbanners">
+      {% comment %}
+        Insert sidebar banner/s if banner_ tag is present and matches a banner
+      {% endcomment %}
+      {% for tag in product.tags %}
+        {% if tag contains 'banner_' %}
+          {% assign image_src = tag | append: '.jpg' | file_img_url: '300x' %}
+          {{ image_src | img_tag }}
+        {% endif %}
+      {% endfor %}
+    </div> 
   </div>
 
   {% endif %}

@@ -211,6 +211,8 @@
               </div>
             {% endif %}
 
+            <div class="chat-button">{% include 'icon-chat' %} Live Chat</div>
+
             <div class="small-promo-content">
               {% if section.settings.small_promo_heading != blank %}
                 <h4 class="small-promo-heading">
@@ -220,12 +222,14 @@
 
               {% if section.settings.small_promo_text_mobile != blank %}
                 <span class="small-promo-text-mobile">
+                  {% include 'icon-phone' %}
                   {{ section.settings.small_promo_text_mobile | escape }}
                 </span>
               {% endif %}
 
               {% if section.settings.small_promo_text != blank %}
                 <span class="small-promo-text-desktop">
+                  {% include 'icon-phone' %}
                   {{ section.settings.small_promo_text | escape }}
                 </span>
               {% endif %}

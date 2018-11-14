@@ -67,9 +67,10 @@
           {%
             include 'rimg',
             img: product.featured_image
-            size: '512x',
+            size: '512x512',
             lazy: true,
-            canvas: true
+            canvas: true,
+            crop: 'center'
           %}
         {% else %}
           {% if product %}

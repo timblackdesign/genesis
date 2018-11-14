@@ -19,10 +19,12 @@
 
 .site-navigation {
 	background-color: transparent;
+	padding-top: 2px;
+	padding-bottom: 3px;
 
 	.navmenu-depth-1 > li > a {
 		color: #fff;
-		font-weight: 500;
+		font-weight: 600;
 	}
 }
 
@@ -30,13 +32,42 @@
 	a {
 		color: #fff;
 		font-size: 16px;
-		font-weight: 500;
+		font-weight: 600;
 	}
 }
 
 .site-header-search-form {
     max-width: 600px;
     margin: 0 auto;
+}
+
+.small-promo-text-desktop {
+	align-items: center;
+	color: $grey-dark;
+	display: flex;
+	font-size: 1rem;
+	font-weight: 600;
+
+	svg {
+		fill: $grey;
+		margin-right: 10px;
+		width: 21px;
+	}
+}
+
+.chat-button {
+	align-items: center;
+	color: $grey-dark;
+	display: flex;
+	font-size: 1rem;
+	margin-right: 30px;
+	font-weight: 600;
+
+	svg {
+		fill: $grey;
+		margin-right: 10px;
+		width: 21px;
+	}
 }
 	
 

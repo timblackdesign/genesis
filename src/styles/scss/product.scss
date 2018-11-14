@@ -68,3 +68,19 @@
 .badge--sale {
 	display: none;
 }
+
+#station-tabs.station-tabs .station-tabs-content-inner {
+	border-color: #eee !important;
+    border-width: 2px !important;
+    padding: 24px !important;
+}
+#station-tabs.station-tabs .station-tabs-link {
+	position: relative;
+	padding-top: 8px !important;
+	top: 1px;
+
+	&.is-active {
+	    border-color: #eee #eee #fff;
+	    border-width: 2px !important;
+	}
+}
