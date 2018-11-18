@@ -1,0 +1,77 @@
+.s4com-helpcenter {
+	max-width: none !important;
+
+	@media screen and ( max-width: 1200px ) {
+		padding: 0 30px;
+	}
+
+	> div {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+	h1 {
+		background-image: url(https://cdn.shopify.com/s/files/1/0103/6091/3977/files/hero_support.jpg?15602396487019380149);
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		background-position: center;
+		color: #fff;
+		display: block;
+		font-size: 70px;
+		padding: 225px 0 300px;
+		margin-bottom: -280px;
+		margin-top: -50px;
+		text-align: center;
+
+		@media screen and ( max-width: 1200px ) {
+			background-size: cover;
+			margin-left: -30px;
+			margin-right: -30px;
+		}
+
+		@media screen and ( max-width: 767px ) {
+			font-size: 35px;
+		}
+	}
+
+	h2 {
+		color: #000 !important;
+
+		@media screen and ( max-width: 767px ) {
+			text-align: left !important;
+			font-size: 24px !important;
+		}
+	}
+	.s4com-panel {
+	    border: 0 solid;
+	    max-width: 600px;
+	    margin: 0 auto;
+
+	    input {
+	    	background-color: #fff;
+	    	margin-bottom: 175px !important;
+	    }
+	}
+	.s4com-top-heading {
+	    border-bottom: 0 solid !important;
+	    font-size: 30px;
+	    text-align: center;
+	    position: relative;
+	    top: -16px;
+	    padding: 0;
+	    margin: 90px auto 0 !important;
+	    background-color: #fff;
+	}
+	.s4com-space-bottom.s4com-border-bottom {
+	    border: 0 solid;
+	    padding: 0;
+	}
+	a, a.s4com-active h4 {
+	    color: #000 !important;
+	    font-weight: 300 !important;
+	}
+	.s4com-sub-heading, .s4com-articles {
+		@media screen and ( max-width: 767px ) {
+			padding-left: 0 !important;
+		}
+	}
+}

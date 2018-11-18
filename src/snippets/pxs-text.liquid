@@ -1,0 +1,100 @@
+{% assign onboarding = false %}
+
+{% if section.settings.image == blank %}
+  {% assign onboarding = true %}
+{% endif %}
+
+<section
+  class="
+    pxs-image-with-text
+    pxs-image-with-text-section-height-{{ section.settings.section_height }}
+  "
+>
+  <div class="pxs-image-with-text-wrapper">
+    <div
+      class="pxs-image-with-text-background"
+      {% if section.settings.image != blank %}
+        {% capture background_style %}
+          background-position: {{ section.settings.position }};
+        {% endcapture %}
+
+        {%
+          include 'rimg',
+          img: section.settings.image,
+          size: '1400x',
+          crop: 'center',
+          style: background_style,
+          lazy: true,
+          background: true
+        %}
+      {% endif %}
+    >
+      {% if onboarding %}
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {% else %}
+        {%
+          include 'rimg',
+          img: section.settings.image,
+          size: '1400x',
+          class: 'pxs-image-with-text-image',
+          crop: 'center',
+          lazy: true,
+          canvas: true
+        %}
+      {% endif %}
+    </div>
+
+    {% if section.settings.overlay_opacity != 0 and section.settings.overlay_background != 'rgba(0,0,0,0)' %}
+      {% assign opacity = section.settings.overlay_opacity | times: 0.01 %}
+      {% assign overlay = section.settings.overlay_background | color_modify: 'alpha', opacity %}
+
+      <div
+        class="pxs-image-with-text-overlay"
+        style="background-color: {{ overlay }};"
+      ></div>
+    {% endif %}
+
+    <div
+      class="
+        pxs-image-with-text-content-wrapper
+        pxs-image-with-text-content-position-y-{{ section.settings.content_position | split: '-' | first }}
+        pxs-image-with-text-content-position-x-{{ section.settings.content_position | split: '-' | last }}
+      "
+    >
+      {% if section.settings.title != blank %}
+        <div
+          class="pxs-image-with-text-content"
+          style="color: {{ section.settings.color }};"
+        >
+          <span class="pxs-image-with-text-meta">
+            {{ section.settings.meta | escape }}
+          </span>
+        <h2
+            class="pxs-image-with-text-heading"
+          >
+            {{ section.settings.title | escape }}
+          </h2>
+
+          {% if section.settings.text != blank %}
+            <div
+              class="pxs-image-with-text-subheading rte"
+            >
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_text != blank %}
+            <a
+              {% if section.settings.link != blank %}
+                href="{{ section.settings.link }}"
+              {% endif %}
+              class="pxs-image-with-text-button"
+            >
+              {{ section.settings.button_text | escape }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

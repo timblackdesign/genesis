@@ -1,0 +1,37 @@
+// Image and Text section
+
+.image-and-text {
+	.pxs-image-with-text-content-position-x-left {
+		.pxs-image-with-text-content {
+			flex-direction: row-reverse;
+
+			.col2 {
+				align-items: flex-start;
+			}
+		}
+	}
+
+	.col1 {
+		width: 40% !important;
+	}
+	.col2 {
+		padding-right: 60px;
+		width: 60% !important;
+	}
+
+	.pxs-image-with-text-heading {
+		font-size: 50px !important;
+		font-weight: 600 !important;
+		text-transform: none !important;
+	}
+}
+
+
+// Video section
+
+.section-video {
+	.home-section--title {
+		font-size: 50px !important;
+		font-weight: 600 !important;
+	}
+}

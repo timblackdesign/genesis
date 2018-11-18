@@ -34,7 +34,7 @@
   {% assign social_url = shop.url | append: product.url %}
   {%-
     include 'share-buttons',
-    snippet_title: 'general.share_buttons.title',
+    snippet_title: 'general.share_buttons.title_short',
     social_image: social_image,
     social_title: product.title,
     social_url: social_url
@@ -126,11 +126,18 @@
                 Insert promocode banner if promocode_ tag is present and matches a banner
               {% endcomment %}
               {% for tag in product.tags %}
-                {% if tag contains 'promocode_' %}
+                {% if tag contains 'promocode--' %}
                   {% assign image_src = tag | append: '.jpg' | file_img_url: '485x' %}
-                  {{ image_src | img_tag }}
+                  {{ image_src | img_tag: '', 'product-promocode' }}
                 {% endif %}
               {% endfor %}
+              
+              {% comment %}
+                Insert social sharin icons if enabled
+              {% endcomment %}
+              {% if enable_social_sharing and is_product_modal == false %}
+                  {{ share_buttons | strip_newlines }}
+                {% endif %}
 
             </div>
 
@@ -159,10 +166,6 @@
                     {{ 'product.buttons.view_details' | t }}
                   </a>
                 {% endif %}
-
-                {% if enable_social_sharing and is_product_modal == false %}
-                  {{ share_buttons | strip_newlines }}
-                {% endif %}
               </div>
             </div>
 
@@ -188,12 +191,31 @@
     {% endcomment %}
   
     {% if product.description != blank or hide_details %}
-      <div class="product-description rte" data-product-description data-tags="{{ product.tags | join: ', ' }}">
+      <div id="product-description" class="product-description rte" data-product-description data-tags="{{ product.tags | join: ', ' }}">
         <div data-station-tabs-app>{{ product.description }}</div>
       </div>
     {% endif %}
 
-    
+    <div class="product-promos">
+      {% assign bg_src_1 = 'promo-support.jpg' | file_img_url: '490x'%}
+      <div class="product-promo" style="background-image: url( {{ bg_src_1 }});">
+        <h3 class="product-promo__headline" >Have a Question?</h3>
+        <span class="product-promo__subtext" >Talk to Genesis Support</span>
+        <a href="" class="product-promo__button">Talk to Genesis</a> 
+      </div>
+
+      {% comment %}
+        Insert promocode banner if promocode_ tag is present and matches a banner
+      {% endcomment %}
+      {% assign bg_src_2 = product.type | handleize | append: '-guide.jpg' | file_img_url: '490x'%}
+      {% assign promo_link = product.type | handleize | append: '-guide.pdf' | file_url %}
+      <div class="product-promo" style="background-image: url( {{ bg_src_2 }});"  >
+        <h3 class="product-promo__headline" >{{ product.type | downcase }} Guide 101</h3>
+        <span class="product-promo__subtext" >Read the guide now.</span>
+        <a href="{{ promo_link }}" class="product-promo__button">More Info</a> 
+      </div>
+    </div>
+
   </div>
 {% comment %}  <div class="product--secondary">
     
@@ -204,25 +226,25 @@
   {% endcomment %}
   {% if layout == 'layout--three-col' %}
   <div class="product--secondary">
-    <div class="product-form--alt" data-product-form-alt></div>
-
-    <div class="product---helplinks">
-        <a class="product---helplink" href="" ><span class="title">Fast and Free Shipping</span><span class="subtext">When you spend $150+</span></a>
-        <a class="product---helplink" href="" ><span class="title">Spend. Earn. Save</span><span class="subtext">Genesis rewards program</span></a>
-        <a class="product---helplink" href="" ><span class="title">Have a Question?</span><span class="subtext">Browse support portal</span></a>
-    </div>   
+    <div class="product-form--alt" data-product-form-alt></div> 
 
     <div class="product--sidebarbanners">
       {% comment %}
         Insert sidebar banner/s if banner_ tag is present and matches a banner
       {% endcomment %}
       {% for tag in product.tags %}
-        {% if tag contains 'banner_' %}
+        {% if tag contains 'banner--' %}
           {% assign image_src = tag | append: '.jpg' | file_img_url: '300x' %}
-          {{ image_src | img_tag }}
+          {{ image_src | img_tag: '', 'product--sidebarbanner' }}
         {% endif %}
       {% endfor %}
     </div> 
+
+    <div class="product---helplinks">
+        <a class="product---helplink" href="" >{% include 'icon-delivery' %}<span><span class="title">Fast and Free Shipping</span><span class="subtext">When you spend $150+</span></span></a>
+        <a class="product---helplink" href="" >{% include 'icon-delivery' %}<span><span class="title">Spend. Earn. Save</span><span class="subtext">Genesis rewards program</span></span></a>
+        <a class="product---helplink" href="" >{% include 'icon-questionmark' %}<span><span class="title">Have a Question?</span><span class="subtext">Browse support portal</span></span></a>
+    </div>     
   </div>
 
   {% endif %}

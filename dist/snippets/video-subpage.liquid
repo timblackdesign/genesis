@@ -1,0 +1,36 @@
+<script
+  type="application/json"
+  data-section-type="dynamic-video"
+  data-section-id="{{ section.id }}"
+  data-section-data>
+  {
+    "autoplay": {{ section.settings.autoplay | json }}
+  }
+</script>
+
+<div class="dynamic-video-wrapper">
+  {% if section.settings.title != blank %}
+    <h1 class="home-section--title">
+      {{ section.settings.title | escape }}
+    </h1>
+  {% endif %}
+
+  {% assign url = section.settings.url | default: 'https://www.youtube.com/watch?v=_9VUPq3SxOc' %}
+
+  <div class="dynamic-video">
+    {% assign overlay = null %}
+
+    {% if section.settings.show_overlay %}
+      {% assign opacity = section.settings.opacity | times: 0.01 %}
+      {% assign overlay = section.settings.background | color_modify: 'alpha', opacity %}
+    {% endif %}
+
+    {%
+      include 'video',
+      cover: section.settings.cover,
+      aspect_ratio: section.settings.aspect_ratio,
+      overlay: overlay,
+      url: url
+    %}
+  </div>
+</div>

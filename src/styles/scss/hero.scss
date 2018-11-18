@@ -1,0 +1,23 @@
+.hero {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    min-height: 400px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__headline {
+	font-size: 70px;
+
+	@media screen and ( max-width: 767px ) {
+		font-size: 35px;
+	}
+}
+
+.hero__subtext {
+
+}

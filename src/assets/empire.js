@@ -27234,3 +27234,54 @@ new Page();
 
 }());
 //# sourceMappingURL=empire.js.map?1527691863318
+
+$( document ).ready(function() {
+	var genders = [];
+	var ages = [];
+	var goals = [];
+  	var tags = $('#product-description').attr('data-tags');
+  	var tagsArray = tags.split(',');
+
+  	tagsArray.forEach(function(item){
+  		if(item.includes('suitable--')){
+  			var newItem = item.replace('suitable--', '');
+
+  			if(newItem.includes('age--')){
+	  			var ageItem = newItem.replace('age--', '').trim().replace('+', 'plus');
+	  			ages.push(ageItem);
+	  			
+	  		}
+
+	  		if(newItem.includes('gender--')){
+	  			var genderItem = newItem.replace('gender--', '').trim();
+	  			genders.push(genderItem);
+	  			
+	  		}
+
+	  		if(newItem.includes('goal--')){
+	  			var goalItem = newItem.replace('goal--', '').trim();
+	  			goals.push(goalItem);  			
+	  		}
+  		}
+  	});
+
+	console.log(ages);	
+	console.log(genders);	
+	console.log(goals);
+	
+	$('#suitable_for').append('<div id="genders"><h3>Suitable for Gender</h3><div class="icon_box" ></div></div><div id="ages"><h3>Ages</h3><div class="icon_box" ></div></div><div id="goals"><h3>Goals</h3><div class="icon_box" ></div></div>');
+
+	genders.forEach(function(gender){
+		$('#genders .icon_box').append('<div class="suitable_icon gender__' + gender + '"><img src="https://cdn.shopify.com/s/files/1/0103/6091/3977/files/suitable_icon_' + gender + '.png?1717986470213353341" />' + gender.replace('-', ' ') + '</div>');
+	})
+
+	ages.forEach(function(age){
+		$('#ages .icon_box').append('<div class="suitable_icon age__' + age + '"><img src="https://cdn.shopify.com/s/files/1/0103/6091/3977/files/suitable_icon_' + age + '.png?1717986470213353341" />' + age.replace('-', ' ').replace('plus', '+') + '</div>');
+	})
+
+	goals.forEach(function(goal){
+		$('#goals .icon_box').append('<div class="suitable_icon goal__' + goal + '"><img src="https://cdn.shopify.com/s/files/1/0103/6091/3977/files/suitable_icon_' + goal + '.png?1717986470213353341" />' + goal.replace('-', ' ') + '</div>');
+	})
+  	// console.log(tagsArray[0]);
+
+});

@@ -1,0 +1,123 @@
+{% include 'video-subpage' %}
+
+{% schema %}
+{
+  "name": "Video",
+  "class": "section-video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Video"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "url",
+      "label": "Link",
+      "accept": ["youtube", "vimeo"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "label": "16:9",
+          "value": "16-9"
+        },
+        {
+          "label": "21:9",
+          "value": "21-9"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover",
+      "label": "Cover image"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Cover image position",
+      "info": "Adjust the focal point of the image. Note: This setting will not have much of an impact if your background image's dimensions are roughly the same size as the section.",
+      "options": [
+        {
+          "label": "Top left",
+          "value": "top-left"
+        },
+        {
+          "label": "Top center",
+          "value": "top-center"
+        },
+        {
+          "label": "Top right",
+          "value": "top-right"
+        },
+        {
+          "label": "Center left",
+          "value": "center-left"
+        },
+        {
+          "label": "Center",
+          "value": "center-center"
+        },
+        {
+          "label": "Center right",
+          "value": "center-right"
+        },
+        {
+          "label": "Bottom left",
+          "value": "bottom-left"
+        },
+        {
+          "label": "Bottom center",
+          "value": "bottom-center"
+        },
+        {
+          "label": "Bottom right",
+          "value": "bottom-right"
+        }
+      ],
+      "default": "center-center"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": "Show overlay"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacity",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    }
+  ]
+}
+
+{% endschema %}

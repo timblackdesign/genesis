@@ -58,4 +58,18 @@
   {% unless filter_position == 'above_menus' %}
     {% include 'product-grid-sidebar-filters' %}
   {% endunless %}
+
+  <div class="collection--sidebarbanners">
+      {% comment %}
+        Insert sidebar banner/s if banner_ tag is present and matches a banner
+      {% endcomment %}
+      {% for tag in collection.tags %}
+        {% if tag contains 'banner--' %}
+          {% assign image_src = tag | append: '.jpg' | file_img_url: '300x' %}
+          <a href="/{{tag | remove: 'banner_' }}">
+            {{ image_src | img_tag }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div> 
 </div>

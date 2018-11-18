@@ -1,0 +1,28 @@
+<script
+  type="application/json"
+  data-section-type="static-about"
+  data-section-id="{{ section.id }}">
+</script>
+
+<section class="about--container page-container">
+  {% include 'hero-default' %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "about-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Select background image"
+    }
+  ]
+}
+
+{% endschema %}
