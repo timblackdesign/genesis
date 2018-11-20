@@ -9091,7 +9091,7 @@ $local-max-width: 680px;
 
 .page-content {
   @extend %layout-container;
-  max-width: $local-max-width;
+  // max-width: $local-max-width;
 }
 
 .page-title {
@@ -15542,4 +15542,5 @@ $local-thumbnail-space: 3px;
 @import 'scss/hero.scss';
 @import 'scss/subpage-sections.scss';
 @import 'scss/s4com.scss';
+@import 'scss/wholesale.scss';
 @import 'scss/collections.scss';

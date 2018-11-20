@@ -1,0 +1,39 @@
+<script
+  type="application/json"
+  data-section-type="static-wholesale"
+  data-section-id="{{ section.id }}">
+</script>
+
+<section class="wholesale--container page-container">
+  {% include 'hero-default' %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "wholesale-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Select background image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Hero Headline",
+      "default": "Hero Headline"
+    },{
+      "type": "text",
+      "id": "subtext",
+      "label": "Hero Subtext",
+      "default": "Hero Subtext"
+    }
+  ]
+}
+
+{% endschema %}

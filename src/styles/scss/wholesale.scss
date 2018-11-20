@@ -1,0 +1,66 @@
+.wholesale--container {
+	h2 {
+		font-size: 60px;
+		margin-top: 90px;
+	}
+	p {
+		font-size: 18px;
+	}
+}
+
+
+.discount {
+	ul {
+		font-size: 15px;
+	}
+
+	> div {
+		background-color: #f7f7f7;
+		border-color: #ebebeb;
+	}
+}
+.discount__badge {
+	background-color: $red;
+	border: 5px solid #fff;
+	height: 112px;
+	margin-bottom: 15px;
+	width: 112px;
+}
+.discount__badge-percentage-val {
+	letter-spacing: -.08em;
+}
+.discount__badge-percentage-label {
+	margin-left: 3px;
+}
+
+
+.wholesale-contact {
+	hr {
+		border-bottom: 1px solid #ededed;
+		width: 100%;
+		margin-top: 90px;
+	}
+	h2 {
+		margin-bottom: 30px;
+	}
+	form {
+		width: 100%;
+	}
+	.contact-page-content {
+		max-width: none;
+	}
+	.button-primary {
+		background-color: $red;
+		border-color: $red;
+		font-weight: 600;
+	}
+}
+
+@media screen and (min-width: 720px) {
+	.form-fields-columns .form-field--three-quarters {
+	    width: calc(75% - 20px);
+	}
+	.form-fields-columns .form-field--one-quarter {
+	    width: calc(25% - 20px);
+	}
+}

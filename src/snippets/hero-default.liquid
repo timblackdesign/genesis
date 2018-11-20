@@ -1,6 +1,6 @@
-  <header class="hero" style="background-image: url({{ section.settings.bg_image | img_url: '2400x' }});">
+  <header class="hero flex-col" style="background-image: url({{ section.settings.bg_image | img_url: '2400x' }});">
     {% if section.settings.headline %}
-      <h1 class="hero__headline">{{ section.settings.headline }}</h1>
+      <h1 class="hero__headline m-0 mb-4">{{ section.settings.headline }}</h1>
     {% else %}
       <h1 class="hero__headline">{{ page.title }}</h1>
     {% endif %}

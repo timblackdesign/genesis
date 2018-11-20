@@ -62,7 +62,8 @@
       if(window.Shopify&&window.Shopify.designMode)document.documentElement.className+=' in-theme-editor';
       if(('ontouchstart' in window)||window.DocumentTouch&&document instanceof DocumentTouch)document.documentElement.className=document.documentElement.className.replace(/\bno-touch\b/,'has-touch');
     </script>
-
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
     {% include 'disable-right-click' %}
 
