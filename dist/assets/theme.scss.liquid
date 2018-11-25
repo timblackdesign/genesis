@@ -15676,6 +15676,15 @@ $black: #0a0a0a;
 	}
 	.newsletter-submit {
 		width: auto;
+
+		@media screen and ( max-width: 767px  ) {
+			margin: 10px 0 0;
+			width: calc(67% - 10px);
+
+			button {
+				width: 100%;
+			}
+		}
 	}
 }
 
